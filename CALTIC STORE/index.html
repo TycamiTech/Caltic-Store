@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link in Bio - Caltic</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- RESET CSS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* --- VARIABEL WARNA (Ganti warna di sini jika mau) --- */
+        :root {
+            --bg-color: #0f0f0f;        /* Hitam Pekat */
+            --card-bg: #1a1a1a;         /* Abu Gelap untuk tombol */
+            --text-main: #f5f5f5;       /* Putih Tulang */
+            --text-muted: #aaaaaa;      /* Abu-abu teks pudar */
+            --accent-gold: #d4af37;     /* Emas Elegan */
+            --hover-bg: #252525;        /* Warna saat tombol disentuh */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            /* Efek background gradasi halus */
+            background-image: radial-gradient(circle at 50% 0%, #2a2a2a 0%, #0f0f0f 70%);
+        }
+
+        /* --- CONTAINER UTAMA --- */
+        .container {
+            width: 100%;
+            max-width: 480px; /* Lebar maksimal seperti HP */
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* --- BAGIAN PROFIL --- */
+        .profile-section {
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .profile-img-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            /* Border Emas Mewah */
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); /* Efek glow emas tipis */
+        }
+
+        .shop-name {
+            font-family: 'Cinzel', serif; /* Font Serif Mewah */
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .shop-bio {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* --- DAFTAR LINK --- */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px; /* Jarak antar tombol */
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Teks di tengah */
+            position: relative;
+            
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            text-decoration: none;
+            
+            padding: 16px 20px;
+            border-radius: 50px; /* Bentuk Pill */
+            border: 1px solid #333; /* Border tipis */
+            
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            
+            /* Animasi muncul satu per satu */
+            opacity: 0; 
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Mengatur delay animasi agar muncul bergantian */
+        .link-btn:nth-child(1) { animation-delay: 0.2s; }
+        .link-btn:nth-child(2) { animation-delay: 0.3s; }
+        .link-btn:nth-child(3) { animation-delay: 0.4s; }
+        .link-btn:nth-child(4) { animation-delay: 0.5s; }
+        .link-btn:nth-child(5) { animation-delay: 0.6s; }
+
+        /* Ikon di dalam tombol */
+        .link-btn i {
+            position: absolute;
+            left: 24px;
+            font-size: 1.2rem;
+            color: var(--accent-gold); /* Ikon warna emas */
+        }
+
+        .link-btn span {
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Efek Hover (Saat kursor diarahkan) */
+        .link-btn:hover {
+            background-color: var(--hover-bg);
+            border-color: var(--accent-gold); /* Border jadi emas saat hover */
+            transform: translateY(-3px); /* Naik sedikit */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Efek Active untuk Mobile (Touch) */
+        .link-btn:active {
+            background-color: var(--hover-bg);
+            border-color: var(--accent-gold);
+            transform: translateY(-1px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: #555;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* --- KEYFRAMES ANIMASI --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* --- RESPONSIVE MOBILE OPTIMIZATION --- */
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 16px;
+            }
+
+            .profile-section {
+                margin-bottom: 30px;
+            }
+
+            .profile-img-container {
+                width: 100px;
+                height: 100px;
+                margin: 0 auto 16px;
+            }
+
+            .shop-name {
+                font-size: 1.5rem;
+                margin-bottom: 6px;
+            }
+
+            .shop-bio {
+                font-size: 0.85rem;
+            }
+
+            .links-container {
+                gap: 12px;
+            }
+
+            .link-btn {
+                padding: 14px 18px;
+                font-size: 0.95rem;
+            }
+
+            .link-btn i {
+                left: 20px;
+                font-size: 1rem;
+            }
+
+            .link-btn:hover {
+                transform: translateY(-2px);
+            }
+
+            footer {
+                margin-top: 40px;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Extra Small Devices (< 360px) */
+        @media (max-width: 360px) {
+            .container {
+                padding: 20px 12px;
+            }
+
+            .profile-img-container {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto 12px;
+            }
+
+            .profile-img {
+                border: 1.5px solid var(--accent-gold);
+            }
+
+            .shop-name {
+                font-size: 1.3rem;
+            }
+
+            .shop-bio {
+                font-size: 0.8rem;
+            }
+
+            .link-btn {
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
+
+            .link-btn i {
+                left: 16px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Touch Device Optimization */
+        @media (hover: none) and (pointer: coarse) {
+            .link-btn {
+                padding: 18px 20px;
+                min-height: 48px;
+            }
+
+            .link-btn:active {
+                background-color: var(--hover-bg);
+                border-color: var(--accent-gold);
+            }
+        }
+
+        /* Performance: Reduce animations on low-end devices */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="profile-section">
+            <div class="profile-img-container">
+                <img src="image/profile.jpg" class="profile-img">
+            </div>
+            <h1 class="shop-name">CALTIC STORE</h1>
+            <p class="shop-bio">Premium Quality & Timeless Elegance.<br>CALTIC Is A Brand That Appeals To Cool People And Stars.<br>Est. 2025</p>
+        </div>
+
+        <div class="links-container">
+            
+            <a href="https://shopee.co.id/tokoanda" target="_blank" class="link-btn">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>Shop on Shopee</span>
+            </a>
+
+            <a href="https://www.tiktok.com/@oneandonlylads?_r=1&_t=ZS-91lHyTFh5Ig" target="_blank" class="link-btn">
+                <i class="fa-brands fa-tiktok"></i>
+                <span>TikTok Official</span>
+            </a>
+
+            <a href="https://www.instagram.com/calticmmxv.co?igsh=YzVzZGdqZTI1OW1k" target="_blank" class="link-btn">
+                <i class="fa-brands fa-instagram"></i>
+                <span>Instagram Gallery</span>
+            </a>
+
+            <a href="https://twitter.com/akunanda" target="_blank" class="link-btn">
+                <i class="fa-brands fa-twitter"></i>
+                <span>Twitter / X</span>
+            </a>
+
+            <a href="http://wa.me/6288991216057" target="_blank" class="link-btn">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>WhatsApp Order</span>
+            </a>
+
+        </div>
+
+        <footer>
+            &copy; 2025 CALTIC STORE. All Rights Reserved.
+        </footer>
+
+    </div>
+
+</body>
+</html>
